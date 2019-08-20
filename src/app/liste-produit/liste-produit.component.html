@@ -1,0 +1,46 @@
+<h2>liste des produits</h2>
+<br>
+
+
+<div class="form-inline">
+  <label class="mr-sm-2">Entrer ID:</label>
+  <input type="text" [(ngModel)]="idapi" 
+    class="form-control mb-2 mr-sm-2">
+
+  <button type="button" class="btn btn-primary   mb-2 mr-sm-2"  (click)="searchID()">search</button>
+  <button type="button" class="btn btn-primary  mb-2 mr-sm-2" style="margin-right: 5px;
+margin-bottom: 5px ;" (click)="list()">show list</button>
+</div>
+<br>
+<br>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>Product ID</th>
+      <th>Product name</th>
+      <th>Product prix</th>
+      <th>Product prixAchat</th>
+      <th *ngIf="search">Delete product</th>
+    </thead>
+    <tbody *ngIf="show">
+      <tr *ngFor="let produit of produits">
+        <td>{{produit?.id}}</td>
+        <td>{{produit?.nom}}</td>
+        <td>{{produit?.prix}}</td>
+        <td>{{produit?.prixAchat}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="search">
+        <tr >
+          <td>{{produits?.id}}</td>
+          <td>{{produits?.nom}}</td>
+          <td>{{produits?.prix}}</td>
+          <td>{{produits?.prixAchat}}</td>
+          <td> <button type="button" class="btn btn-info btn-lg" (click)="supprimer()"> 
+              <span class="glyphicon glyphicon-remove"></span> Remove 
+            </button></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
